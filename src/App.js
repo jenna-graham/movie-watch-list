@@ -17,10 +17,10 @@ export default function App() {
 
   return (
     <Router>
-      <div>
+      <div className="App">
         <nav>
           <ul>
-            {user && <li>&& Welcome {user.email}!</li>}
+            {user && <li> Welcome {user.email}!</li>}
             <li>
               <Link to="/">Home</Link>
             </li>

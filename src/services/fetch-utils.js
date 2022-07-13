@@ -17,3 +17,9 @@ export function getUser() {
 export async function logout() {
   await client.auth.signOut();
 }
+export async function searchMovies(title) {
+  const raw = await fetch(`/.netlify/functions/movies?title=${title}`);
+  const { results } = await raw.json();
+
+  return results;
+}

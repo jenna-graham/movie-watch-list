@@ -7,7 +7,7 @@ const headers = {
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
 };
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   try {
     const response = await fetch(`
     https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_KEY}&query=${event.queryStringParameters.title}&page=1`);
@@ -20,7 +20,6 @@ exports.handler = async (event, context) => {
       body: json,
     };
   } catch (error) {
-    console.log(error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed fetching data' }),

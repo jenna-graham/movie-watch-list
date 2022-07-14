@@ -38,3 +38,9 @@ export async function deleteFavorite(id) {
 
   return body;
 }
+
+export async function getMovie(id) {
+  const raw = await fetch(`/.netlify/functions/single-movie?id=${id}`);
+  const results = await raw.json();
+  return results;
+}

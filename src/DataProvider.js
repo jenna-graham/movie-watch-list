@@ -5,6 +5,7 @@ import {
   searchMovies,
   getFavorites,
   deleteFavorite,
+  getMovie,
 } from './services/fetch-utils';
 
 const URL = 'https://image.tmdb.org/t/p/original/';
@@ -15,6 +16,7 @@ export default function DataProvider({ children }) {
   const [loading, setLoading] = useState([]);
   const [movies, setMovies] = useState([]);
   const [favorites, setFavorites] = useState(null);
+  const [singleMovie, setSingleMovie] = useState([]);
 
   const stateAndSetters = {
     user,
@@ -28,6 +30,8 @@ export default function DataProvider({ children }) {
     handleAddFavorite,
     handleFetchFavorites,
     handleDeleteFavorite,
+    singleMovie,
+    handleFetchMovie,
   };
 
   async function handleMovieSearch(title) {
@@ -35,6 +39,12 @@ export default function DataProvider({ children }) {
     const movies = await searchMovies(title);
     setLoading(false);
     setMovies(movies);
+  }
+  async function handleFetchMovie(id) {
+    setLoading(true);
+    const movie = await getMovie(id);
+    setLoading(false);
+    setSingleMovie(movie);
   }
   async function handleAddFavorite(favorite) {
     setLoading(true);

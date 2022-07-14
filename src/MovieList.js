@@ -39,7 +39,7 @@ export default function MovieList({ movies }) {
                       })
                 }
               >
-                {alreadyFave ? '❤️' : '♡'} Favorite
+                {alreadyFave ? '❤️' : '♡'}
               </button>
             </div>
           );

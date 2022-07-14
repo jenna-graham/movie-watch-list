@@ -23,3 +23,18 @@ export async function searchMovies(title) {
 
   return results;
 }
+export async function createFavorite(favorite) {
+  const { body } = await client.from('favorites').insert(favorite);
+
+  return body;
+}
+export async function getFavorites() {
+  const { body } = await client.from('favorites').select('*').match({ user_id: getUser().id });
+  return body;
+}
+
+export async function deleteFavorite(id) {
+  const { body } = await client.from('favorites').delete().match({ id }).single();
+
+  return body;
+}

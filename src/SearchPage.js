@@ -4,13 +4,13 @@ import MovieList from './MovieList';
 import { searchMovies } from './services/fetch-utils';
 
 export default function SearchPage() {
-  const { handleMovieSearch, movies, loading, setMovies } = useDataContext();
+  const { handleMovieSearch, movies, setMovies } = useDataContext();
   const [title, setTitle] = useState('');
-  console.log(movies);
+
   useEffect(() => {
     async function fetchMovies() {
-      const newMovies = await searchMovies('Jaws');
-      console.log(newMovies);
+      const newMovies = await searchMovies('A');
+
       setMovies(newMovies);
     }
     fetchMovies();

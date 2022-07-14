@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDataContext } from './DataProvider';
 
 export default function DetailPage() {
-  const { handleFetchMovie, movie, loading, URL } = useDataContext();
+  const { handleFetchMovie, singleMovie, loading, URL } = useDataContext();
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,11 +15,10 @@ export default function DetailPage() {
       {loading ? (
         <h1>loading. . .</h1>
       ) : (
-        <div>
-          <h1>{movie.title}</h1>
-          <img className="movie-detail" src={`${URL}${movie.poster_path}`} />
-          <p>{movie.overview}</p>
-          {JSON.stringify(movie)}
+        <div className="movie-detail">
+          <h1>{singleMovie.title}</h1>
+          <img src={`${URL}${singleMovie.poster_path}`} />
+          <p>{singleMovie.overview}</p>
         </div>
       )}
     </div>

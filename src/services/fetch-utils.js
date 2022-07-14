@@ -28,9 +28,14 @@ export async function createFavorite(favorite) {
 
   return body;
 }
-export async function getFavorites() {
-  const { body } = await client.from('favorites').select('*').match({ user_id: getUser().id });
-  return body;
+export async function getFavorites(id) {
+  if (id) {
+    const { body } = await client.from('favorites').select('*').match({ user_id: id });
+    return body;
+  } else {
+    const { body } = await client.from('favorites').select('*').match({ user_id: getUser().id });
+    return body;
+  }
 }
 
 export async function deleteFavorite(id) {
@@ -40,6 +45,7 @@ export async function deleteFavorite(id) {
 }
 
 export async function getMovie(id) {
+  console.log(id);
   const raw = await fetch(`/.netlify/functions/single-movie?id=${id}`);
   const results = await raw.json();
   return results;

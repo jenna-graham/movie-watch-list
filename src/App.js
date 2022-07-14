@@ -18,6 +18,7 @@ export default function App() {
   return (
     <Router>
       <div className="App">
+        <h1>Alchemy Flix</h1>
         <nav>
           <ul>
             {user && <li> Welcome {user.email}!</li>}
@@ -30,7 +31,7 @@ export default function App() {
                   <Link to="/favorites">Your Favorite Movies</Link>
                 </li>
                 <li>
-                  <button onClick={handleLogout}>Logout</button>
+                  <button className='logout-btn' onClick={handleLogout}>Logout</button>
                 </li>
               </>
             )}

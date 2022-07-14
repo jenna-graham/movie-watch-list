@@ -24,7 +24,8 @@ export default function MovieList({ movies }) {
               <h2>{movie.title}</h2>
               <img src={`${URL}${movie.poster_path}`} />
               <Link to={`/movies/${movie.api_id || movie.id}`}>Click for more details</Link>
-              <button
+              <br/>
+              <button className='heart-button'
                 onClick={() =>
                   alreadyFave
                     ? handleDeleteFavorite(alreadyFave.id)

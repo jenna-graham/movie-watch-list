@@ -19,7 +19,7 @@ export default function SearchPage() {
 
   return (
     <div>
-      <section>
+      <section className='search-bar'>
         <input onChange={(e) => setTitle(e.target.value)} />
         <button onClick={() => handleMovieSearch(title)}>Search Movie</button>
       </section>

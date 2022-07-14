@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { signInUser, signUpUser } from './services/fetch-utils';
 import { useDataContext } from './DataProvider';
+import './App.css';
 
 export default function AuthPage() {
   const { setUser } = useDataContext();
@@ -34,35 +35,35 @@ export default function AuthPage() {
 
   return (
     <div className="auth-page">
-      <form onSubmit={handleSignUp}>
+      <form className='form-one' onSubmit={handleSignUp}>
         <label>
           Email
-          <input value={signUpEmail} onChange={(e) => setSignUpEmail(e.target.value)} />
+          <input className='auth-input' value={signUpEmail} onChange={(e) => setSignUpEmail(e.target.value)} />
         </label>
         <label>
           Password
-          <input
+          <input className='auth-input'
             value={signUpPassword}
             type="password"
             onChange={(e) => setSignUpPassword(e.target.value)}
           />
         </label>
-        <button>Sign Up</button>
+        <button className='auth-button' >Sign Up</button>
       </form>
-      <form onSubmit={handleSignIn}>
+      <form className='form-two' onSubmit={handleSignIn}>
         <label>
           Email
-          <input value={signInEmail} onChange={(e) => setSignInEmail(e.target.value)} />
+          <input className='auth-input' value={signInEmail} onChange={(e) => setSignInEmail(e.target.value)} />
         </label>
         <label>
           Password
-          <input
+          <input className='auth-input'
             value={signInPassword}
             type="password"
             onChange={(e) => setSignInPassword(e.target.value)}
           />
         </label>
-        <button>Sign In</button>
+        <button className='auth-button'>Sign In</button>
       </form>
     </div>
   );
